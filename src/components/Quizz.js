@@ -2,7 +2,7 @@ import style from "./Quizz.module.scss";
 import Question from "./Question.js"
 import { questions } from "../data/QuestionsList.js"
 
-export default function Quizz({id, title, resA, resB, resC}) {
+export default function Quizz({id, title, resA, resB, resC, currentQuestionIndex}) {
 
   return (
     <div className={`${style.quizz} p-20`}>
