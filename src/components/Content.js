@@ -22,14 +22,16 @@ export default function Content() {
   // TIMER ------------------------------------
 
   useEffect(() => {
-    timeLeft > 0 && setTimeout(() => {
+    const timer = timeLeft > 0 && setTimeout(() => {
       setTimeLeft(timeLeft - 1)
     }, 1000);
-  }, [timeLeft])
+    if (showScore) {
+      clearTimeout(timer)
+    }
+  }, [timeLeft, showScore])
 
   useEffect(() => {
     timeLeft === 0 ? setGameOver(true) : setGameOver(gameOver);
-    console.log(gameOver)
   }, [timeLeft, gameOver])
 
 

@@ -1,7 +1,7 @@
 import style from "./Quizz.module.scss";
 import Question from "./Question.js";
 import ShowScore from "./ShowScore";
-import GameOver from "./GameOver"
+import GameOver from "./GameOver";
 
 export default function Quizz({ questions, currentQuestionIndex, handleClick, selectedRes, clickedResponse, showScore, gameOver, goodResponses }) {
   
