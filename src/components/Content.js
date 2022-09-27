@@ -8,9 +8,14 @@ import Timer from "./Timer";
 export default function Content() {
   
   // STATE ------------------------------------
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(10);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [widthProgressBar, setWidthProgressBar] = useState(0);
+  const [selectedRes, setSelectedRes] = useState(false);
+  const [goodResponses, setGoodResponses] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [showScore, setShowScore] = useState(false);
+
   
   // STATE ------------------------------------
 
@@ -22,6 +27,12 @@ export default function Content() {
     }, 1000);
   }, [timeLeft])
 
+  useEffect(() => {
+    timeLeft === 0 ? setGameOver(true) : setGameOver(gameOver);
+    console.log(gameOver)
+  }, [timeLeft, gameOver])
+
+
 // TIMER ---------------------------------------
 
 // QUIZZ --------------------------------
@@ -30,8 +41,22 @@ const handleClick = () => {
   if(currentQuestionIndex < questions.length - 1) {
     setCurrentQuestionIndex(currentQuestionIndex + 1)
   } else {
-    alert("Le resultat s'affichera ici")
+    setShowScore(true);
   }
+}
+
+
+
+const clickedResponse = () => {
+  setSelectedRes(!selectedRes)
+  {questions[currentQuestionIndex].responses.map(response => {
+    if(response.isRight === true) {
+      setGoodResponses(goodResponses + 1)
+    } else {
+      setGoodResponses(goodResponses)
+    }
+  })}
+  console.log(goodResponses);
 }
 
 // QUIZZ --------------------------------
@@ -45,7 +70,12 @@ const handleClick = () => {
       <Quizz 
       questions={questions} 
       currentQuestionIndex={currentQuestionIndex}
-      handleClick={handleClick} />
+      handleClick={handleClick}
+      selectedRes={selectedRes}
+      clickedResponse={clickedResponse}
+      goodResponses={goodResponses}
+      showScore={showScore}
+      gameOver={gameOver} />
     </div>  
   )
 }
