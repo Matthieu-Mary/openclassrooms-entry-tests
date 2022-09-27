@@ -8,7 +8,7 @@ import Timer from "./Timer";
 export default function Content() {
   
   // STATE ------------------------------------
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(999);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [widthProgressBar, setWidthProgressBar] = useState(0);
   const [selectedRes, setSelectedRes] = useState(false);
