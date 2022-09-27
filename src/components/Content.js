@@ -6,10 +6,15 @@ import Quizz from "./Quizz";
 import Timer from "./Timer";
 
 export default function Content() {
+  
+  // STATE ------------------------------------
+  const [timeLeft, setTimeLeft] = useState(60);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [widthProgressBar, setWidthProgressBar] = useState(0);
+  
+  // STATE ------------------------------------
 
   // TIMER ------------------------------------
-
-  const [timeLeft, setTimeLeft] = useState(60);
 
   useEffect(() => {
     timeLeft > 0 && setTimeout(() => {
@@ -19,28 +24,28 @@ export default function Content() {
 
 // TIMER ---------------------------------------
 
-
-// PROGRESS-BAR --------------------------------
-
-  const [percentage, setPercentage] = useState("");
-
-// PROGRESS-BAR --------------------------------
-
-
 // QUIZZ --------------------------------
-
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(questions[0]);
+const handleClick = () => {
+  setWidthProgressBar(widthProgressBar + 1)
+  if(currentQuestionIndex < questions.length - 1) {
+    setCurrentQuestionIndex(currentQuestionIndex + 1)
+  } else {
+    alert("Le resultat s'affichera ici")
+  }
+}
 
 // QUIZZ --------------------------------
 
   return (
     <div className={`${ style.content } d-flex justify-center align-center flex-column`}>
       <Timer timeLeft={timeLeft}/>
-      <ProgressBar percentage={percentage} />
+      <ProgressBar 
+      currentQuestionIndex={currentQuestionIndex}
+      widthProgressBar={widthProgressBar} />
       <Quizz 
       questions={questions} 
-      setCurrentQuestionIndex={setCurrentQuestionIndex} 
-      currentQuestionIndex={currentQuestionIndex} />
+      currentQuestionIndex={currentQuestionIndex}
+      handleClick={handleClick} />
     </div>  
   )
 }

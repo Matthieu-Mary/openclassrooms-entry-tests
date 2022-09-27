@@ -1,20 +1,20 @@
 export const questions = [
   {
       id: 1,
-      title: "Qui est Nicolas Sarkozy ?",
+      title: "Quelle est la capitale du Canada ?",
       responses: [
         {
-        resTitle : "Un ancien politique français",
+        resTitle : "Ottawa",
         resId: "a",
         isRight: true
       },
       {
-        resTitle : "Un joueur de football",
+        resTitle : "Québec",
         resId: "b",
         isRight: false
       },
       {
-        resTitle : "Un chanteur de hip-hop",
+        resTitle : "Montréal",
         resId: "c",
         isRight: false
       }
@@ -22,22 +22,87 @@ export const questions = [
   },
   {
       id: 2,
-      title: "Combien font 1 + 1 ?",
+      title: "La hauteur de l'Arc de Triomphe est de :",
       responses: [
         {
-        resTitle : "3",
+        resTitle : "40 mètres",
+        resId: "a",
         isRight: false
       },
       {
-        resTitle : "5",
+        resTitle : "50 mètres",
+        resId: "b",
+        isRight: true
+      },
+      {
+        resTitle : "60 mètres",
+        resId: "c",
+        isRight: false
+      }
+      ]
+  },
+  {
+      id: 3,
+      title: "Amazon fût fondé en :",
+      responses: [
+        {
+        resTitle : "1992",
+        resId: "a",
         isRight: false
       },
       {
-        resTitle : "2",
+        resTitle : "1994",
+        resId: "b",
+        isRight: true
+      },
+      {
+        resTitle : "1997",
+        resId: "c",
+        isRight: false
+      }
+      ]
+  },
+  {
+      id: 4,
+      title: "Tom Hardy est :",
+      responses: [
+        {
+        resTitle : "Un homme politique Américain",
+        resId: "a",
+        isRight: false
+      },
+      {
+        resTitle : "un joueur de football Ecossais",
+        resId: "b",
+        isRight: false
+      },
+      {
+        resTitle : "Un acteur britannique",
+        resId: "c",
         isRight: true
       }
       ]
   },
- 
+  {
+      id: 5,
+      title: "Le Javascript à été créé par :",
+      responses: [
+        {
+        resTitle : "Hans Zimmer",
+        resId: "a",
+        isRight: false
+      },
+      {
+        resTitle : "Brendan Eich",
+        resId: "b",
+        isRight: true
+      },
+      {
+        resTitle : "james Gosling",
+        resId: "c",
+        isRight: false
+      }
+      ]
+  },
  
   ]
