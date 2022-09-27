@@ -1,20 +1,16 @@
 import style from "./Quizz.module.scss";
 import Question from "./Question.js"
-import { questions } from "../data/QuestionsList.js"
 
-export default function Quizz({id, title, resA, resB, resC, currentQuestionIndex}) {
 
+export default function Quizz({ questions, currentQuestionIndex }) {
+  
   return (
     <div className={`${style.quizz} p-20`}>
-        {questions.map(question => (
           <Question 
-          id={question.id}
-          title={question.title}
-          resA={question.resA}
-          resB={question.resB}
-          resC={question.resC}
+          id={questions[0].id}
+          title={questions[0].title}
+          questions={questions}
           />
-        ))}
     </div>
   )
 }
