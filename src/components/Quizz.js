@@ -3,13 +3,16 @@ import Question from "./Question.js";
 import ShowScore from "./ShowScore";
 import GameOver from "./GameOver";
 
-export default function Quizz({ questions, currentQuestionIndex, handleClick, selectedRes, clickedResponse, showScore, gameOver, goodResponses }) {
+export default function Quizz({ questions, currentQuestionIndex, handleClick, selectedRes, clickedResponse, showScore, gameOver, goodResponses, handlePlayAgain }) {
   
+
   return (
     <div className={`${style.quizz} p-20`}>
       {
         gameOver ? 
-        <GameOver /> 
+        <GameOver 
+        handlePlayAgain={handlePlayAgain}
+        /> 
         :     
         showScore ? 
         <ShowScore goodResponses={goodResponses}/> 

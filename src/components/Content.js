@@ -8,8 +8,9 @@ import Timer from "./Timer";
 export default function Content() {
   
   // STATE ------------------------------------
-  const [timeLeft, setTimeLeft] = useState(999);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentResponseIndex, setCurrentResponseIndex] = useState(0);
   const [widthProgressBar, setWidthProgressBar] = useState(0);
   const [selectedRes, setSelectedRes] = useState(false);
   const [goodResponses, setGoodResponses] = useState(0);
@@ -48,20 +49,29 @@ const handleClick = () => {
 }
 
 
-
 const clickedResponse = () => {
   setSelectedRes(!selectedRes)
   {questions[currentQuestionIndex].responses.map(response => {
-    if(response.isRight === true) {
-      setGoodResponses(goodResponses + 1)
+    if(response[currentResponseIndex].isRight === true) {
+      setGoodResponses(...goodResponses + 1)
     } else {
-      setGoodResponses(goodResponses)
+      setGoodResponses(...goodResponses)
     }
   })}
-  console.log(goodResponses);
 }
 
 // QUIZZ --------------------------------
+
+
+// GAME OVER --------------------------------
+const handlePlayAgain = () => {
+  setTimeLeft(60);
+  setGameOver(false);
+  setCurrentQuestionIndex(0);
+  setWidthProgressBar(0);
+  console.log('play again');
+}
+// GAME OVER --------------------------------
 
   return (
     <div className={`${ style.content } d-flex justify-center align-center flex-column`}>
@@ -77,7 +87,9 @@ const clickedResponse = () => {
       clickedResponse={clickedResponse}
       goodResponses={goodResponses}
       showScore={showScore}
-      gameOver={gameOver} />
+      gameOver={gameOver} 
+      handlePlayAgain={handlePlayAgain}
+      />
     </div>  
   )
 }

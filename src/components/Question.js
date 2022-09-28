@@ -17,9 +17,13 @@ export default function Question({id, title, questions, currentQuestionIndex, ha
           goodResponses={goodResponses}  
           />
         ))}
+
         <button 
-        onClick={ handleClick } 
-        className="btn btn-primary w-40 mt-10 mb-10">Valider</button>
+          onClick={ handleClick } 
+          className="btn btn-primary w-40 mt-10 mb-10">
+            Valider
+        </button>
+
         </div>
     </div>
   )
