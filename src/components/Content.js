@@ -8,20 +8,16 @@ import Timer from "./Timer";
 export default function Content() {
   
   // STATE ------------------------------------
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(999);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentResponseIndex, setCurrentResponseIndex] = useState(0);
   const [widthProgressBar, setWidthProgressBar] = useState(0);
-  const [selectedRes, setSelectedRes] = useState(false);
-  const [goodResponses, setGoodResponses] = useState(0);
+  const [score, setScore] = useState(0);
+  const [clickedElement, setClickedElement] = useState(null);
   const [gameOver, setGameOver] = useState(false);
   const [showScore, setShowScore] = useState(false);
-
-  
   // STATE ------------------------------------
 
   // TIMER ------------------------------------
-
   useEffect(() => {
     const timer = timeLeft > 0 && setTimeout(() => {
       setTimeLeft(timeLeft - 1)
@@ -34,9 +30,8 @@ export default function Content() {
   useEffect(() => {
     timeLeft === 0 ? setGameOver(true) : setGameOver(gameOver);
   }, [timeLeft, gameOver])
-
-
 // TIMER ---------------------------------------
+
 
 // QUIZZ --------------------------------
 const handleClick = () => {
@@ -45,21 +40,18 @@ const handleClick = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1)
   } else {
     setShowScore(true);
-  }
+  } 
+  console.log(score)
+  setClickedElement(null)
 }
 
 
-const clickedResponse = () => {
-  setSelectedRes(!selectedRes)
-  {questions[currentQuestionIndex].responses.map(response => {
-    if(response[currentResponseIndex].isRight === true) {
-      setGoodResponses(...goodResponses + 1)
-    } else {
-      setGoodResponses(...goodResponses)
-    }
-  })}
+const handleClickedResponse = (index) => {
+  const isCorrect = (questions[currentQuestionIndex].responses[index].isRight === true);
+  setClickedElement(index);
+  console.log(score);
+  isCorrect ? setScore(score + 1) : setScore(score);
 }
-
 // QUIZZ --------------------------------
 
 
@@ -69,24 +61,26 @@ const handlePlayAgain = () => {
   setGameOver(false);
   setCurrentQuestionIndex(0);
   setWidthProgressBar(0);
-  console.log('play again');
 }
 // GAME OVER --------------------------------
 
   return (
     <div className={`${ style.content } d-flex justify-center align-center flex-column`}>
-      <Timer timeLeft={timeLeft}/>
+      <Timer 
+      timeLeft={timeLeft}
+      />
       <ProgressBar 
       currentQuestionIndex={currentQuestionIndex}
-      widthProgressBar={widthProgressBar} />
+      widthProgressBar={widthProgressBar} 
+      />
       <Quizz 
       questions={questions} 
       currentQuestionIndex={currentQuestionIndex}
       handleClick={handleClick}
-      selectedRes={selectedRes}
-      clickedResponse={clickedResponse}
-      goodResponses={goodResponses}
+      handleClickedResponse={handleClickedResponse}
+      score={score}
       showScore={showScore}
+      clickedElement={clickedElement}
       gameOver={gameOver} 
       handlePlayAgain={handlePlayAgain}
       />

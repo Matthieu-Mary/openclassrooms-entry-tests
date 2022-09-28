@@ -6,17 +6,17 @@ export const questions = [
         {
         resTitle : "Ottawa",
         resId: "a",
-        isRight: true
+        isRight: true,
       },
       {
         resTitle : "Québec",
         resId: "b",
-        isRight: false
+        isRight: false,
       },
       {
         resTitle : "Montréal",
         resId: "c",
-        isRight: false
+        isRight: false,
       }
       ]
   },
@@ -27,18 +27,17 @@ export const questions = [
         {
         resTitle : "40 mètres",
         resId: "a",
-        isRight: false
+        isRight: false,
       },
       {
         resTitle : "50 mètres",
         resId: "b",
-        isRight: true
+        isRight: true,
       },
       {
         resTitle : "60 mètres",
         resId: "c",
-        isRight: false
-      }
+        isRight: false      }
       ]
   },
   {
@@ -48,17 +47,17 @@ export const questions = [
         {
         resTitle : "1992",
         resId: "a",
-        isRight: false
+        isRight: false,
       },
       {
         resTitle : "1994",
         resId: "b",
-        isRight: true
+        isRight: true,
       },
       {
         resTitle : "1997",
         resId: "c",
-        isRight: false
+        isRight: false,
       }
       ]
   },
@@ -69,17 +68,17 @@ export const questions = [
         {
         resTitle : "Un homme politique Américain",
         resId: "a",
-        isRight: false
+        isRight: false,
       },
       {
         resTitle : "un joueur de football Ecossais",
         resId: "b",
-        isRight: false
+        isRight: false,
       },
       {
         resTitle : "Un acteur britannique",
         resId: "c",
-        isRight: true
+        isRight: true,
       }
       ]
   },
@@ -90,17 +89,17 @@ export const questions = [
         {
         resTitle : "Hans Zimmer",
         resId: "a",
-        isRight: false
+        isRight: false,
       },
       {
         resTitle : "Brendan Eich",
         resId: "b",
-        isRight: true
+        isRight: true,
       },
       {
         resTitle : "james Gosling",
         resId: "c",
-        isRight: false
+        isRight: false,
       }
       ]
   },

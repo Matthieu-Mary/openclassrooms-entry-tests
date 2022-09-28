@@ -1,10 +1,12 @@
 
-export default function Response({resTitle, resId, selectedRes, clickedResponse, goodResponses}) {
+export default function Response({resTitle, resId, index, handleClickedResponse, clickedElement}) {
+  
+  
 
   return (
     <input 
-    onClick={() => clickedResponse()} 
-    className={`btn btn-reverse-primary mb-10 ${selectedRes ? 'btn-selected' : ''}`} 
+    onClick={() => handleClickedResponse(index)} 
+    className={`btn btn-reverse-primary mb-10 ${clickedElement === index ? 'btn-selected' : ''}`} 
     type="button" 
     value={`${resId} -  ${resTitle}`} />
   )

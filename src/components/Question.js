@@ -1,20 +1,21 @@
 import style from "./Question.module.scss";
 import Response from "./Response.js";
 
-export default function Question({id, title, questions, currentQuestionIndex, handleClick, selectedRes, clickedResponse, goodResponses}) {
+export default function Question({index, id, title, questions, currentQuestionIndex, handleClick, clickedElement, handleClickedResponse, goodResponses}) {
 
   return (
     <div className={style.question}>
         <h3 className='mb-20'>{`${id} - ${title}`}</h3>
         <div className="d-flex flex-column justify-center align-center">
         {
-          questions[currentQuestionIndex].responses.map(response => (
+          questions[currentQuestionIndex].responses.map((response, index) => (
           <Response 
+          key={index}
           resTitle={response.resTitle} 
           resId={response.resId}
-          clickedResponse={clickedResponse}
-          selectedRes={selectedRes}
-          goodResponses={goodResponses}  
+          index={index}
+          clickedElement={clickedElement}
+          handleClickedResponse={handleClickedResponse} 
           />
         ))}
 
