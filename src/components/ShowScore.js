@@ -1,8 +1,9 @@
 
-export default function ShowScore({ score }) {
+export default function ShowScore({ handlePlayAgain, verifiedScore }) {
   return (
-    <div className={`p-20 d-flex justify-center`}>
-        <h4>Votre score est de { score } / 5</h4>
+    <div className={`p-20 d-flex justify-center flex-column align-center`}>
+        <h4 className="mb-20">Votre score est de { verifiedScore } / 5</h4>
+        <button onClick={handlePlayAgain} className="btn btn-reverse-primary">Rejouer</button>
     </div>
   )
 }

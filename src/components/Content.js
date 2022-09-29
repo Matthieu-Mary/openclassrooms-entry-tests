@@ -8,13 +8,15 @@ import Timer from "./Timer";
 export default function Content() {
   
   // STATE ------------------------------------
-  const [timeLeft, setTimeLeft] = useState(999);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [widthProgressBar, setWidthProgressBar] = useState(0);
   const [score, setScore] = useState(0);
+  const [verifiedScore, setVerifiedScore] = useState(0);
   const [clickedElement, setClickedElement] = useState(null);
   const [gameOver, setGameOver] = useState(false);
   const [showScore, setShowScore] = useState(false);
+  const [validateButton, setValidateButton] = useState(true)
   // STATE ------------------------------------
 
   // TIMER ------------------------------------
@@ -35,22 +37,33 @@ export default function Content() {
 
 // QUIZZ --------------------------------
 const handleClick = () => {
-  setWidthProgressBar(widthProgressBar + 1)
-  if(currentQuestionIndex < questions.length - 1) {
-    setCurrentQuestionIndex(currentQuestionIndex + 1)
-  } else {
-    setShowScore(true);
-  } 
-  console.log(score)
-  setClickedElement(null)
+
+    setWidthProgressBar(widthProgressBar + 1)
+    if(currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1)
+    } else {
+      setShowScore(true);
+    } 
+
+  setClickedElement(null);
+  setVerifiedScore(verifiedScore + score);
+  setScore(0);
 }
 
 
-const handleClickedResponse = (index) => {
-  const isCorrect = (questions[currentQuestionIndex].responses[index].isRight === true);
+const handleFocus = (event, index) => {
   setClickedElement(index);
-  console.log(score);
-  isCorrect ? setScore(score + 1) : setScore(score);
+  if(setClickedElement) {
+    setValidateButton(false)
+  }
+  const elementFocused = (questions[currentQuestionIndex].responses[index])
+  const isCorrect = elementFocused.isRight;
+
+  if(event.target.value.split('').splice(5, 21).join('') === isCorrect){
+    setScore(1)
+  } else {
+    setScore(0)
+  }
 }
 // QUIZZ --------------------------------
 
@@ -59,10 +72,14 @@ const handleClickedResponse = (index) => {
 const handlePlayAgain = () => {
   setTimeLeft(60);
   setGameOver(false);
+  setShowScore(false);
   setCurrentQuestionIndex(0);
   setWidthProgressBar(0);
+  setVerifiedScore(0);
+  setValidateButton(true);
 }
 // GAME OVER --------------------------------
+
 
   return (
     <div className={`${ style.content } d-flex justify-center align-center flex-column`}>
@@ -77,8 +94,9 @@ const handlePlayAgain = () => {
       questions={questions} 
       currentQuestionIndex={currentQuestionIndex}
       handleClick={handleClick}
-      handleClickedResponse={handleClickedResponse}
-      score={score}
+      handleFocus={handleFocus}
+      validateButton={validateButton}
+      verifiedScore={verifiedScore}
       showScore={showScore}
       clickedElement={clickedElement}
       gameOver={gameOver} 

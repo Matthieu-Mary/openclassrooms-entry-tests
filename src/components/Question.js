@@ -1,7 +1,7 @@
 import style from "./Question.module.scss";
 import Response from "./Response.js";
 
-export default function Question({index, id, title, questions, currentQuestionIndex, handleClick, clickedElement, handleClickedResponse, goodResponses}) {
+export default function Question({index, id, title, questions, currentQuestionIndex, handleClick, clickedElement, handleFocus , goodResponses, validateButton}) {
 
   return (
     <div className={style.question}>
@@ -15,12 +15,13 @@ export default function Question({index, id, title, questions, currentQuestionIn
           resId={response.resId}
           index={index}
           clickedElement={clickedElement}
-          handleClickedResponse={handleClickedResponse} 
+          handleFocus={handleFocus} 
           />
         ))}
 
         <button 
           onClick={ handleClick } 
+          disabled={validateButton}
           className="btn btn-primary w-40 mt-10 mb-10">
             Valider
         </button>

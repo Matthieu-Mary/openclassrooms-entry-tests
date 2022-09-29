@@ -3,7 +3,7 @@ import Question from "./Question.js";
 import ShowScore from "./ShowScore";
 import GameOver from "./GameOver";
 
-export default function Quizz({ questions, currentQuestionIndex, handleClick, handleClickedResponse, showScore, gameOver, clickedElement, score, handlePlayAgain }) {
+export default function Quizz({ questions, currentQuestionIndex, handleClick, handleFocus, showScore, gameOver, clickedElement, verifiedScore, handlePlayAgain, validateButton }) {
   
 
   return (
@@ -15,7 +15,10 @@ export default function Quizz({ questions, currentQuestionIndex, handleClick, ha
         /> 
         :     
         showScore ? 
-        <ShowScore score={score}/> 
+        <ShowScore 
+        verifiedScore={verifiedScore}
+        handlePlayAgain={handlePlayAgain}
+        /> 
         :
         <Question 
         id={questions[currentQuestionIndex].id}
@@ -24,7 +27,8 @@ export default function Quizz({ questions, currentQuestionIndex, handleClick, ha
         currentQuestionIndex={currentQuestionIndex}
         clickedElement={clickedElement}
         handleClick={handleClick}
-        handleClickedResponse={handleClickedResponse}
+        handleFocus={handleFocus}
+        validateButton={validateButton}
         /> 
       }
     </div>
