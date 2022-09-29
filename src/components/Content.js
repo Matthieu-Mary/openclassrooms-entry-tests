@@ -37,15 +37,16 @@ export default function Content() {
 
 // QUIZZ --------------------------------
 const handleClick = () => {
-
-    setWidthProgressBar(widthProgressBar + 1)
-    if(currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1)
-    } else {
-      setShowScore(true);
-    } 
+  
+  setWidthProgressBar(widthProgressBar + 1)
+  if(currentQuestionIndex < questions.length - 1) {
+    setCurrentQuestionIndex(currentQuestionIndex + 1)
+  } else {
+    setShowScore(true);
+  } 
 
   setClickedElement(null);
+  setValidateButton(true);
   setVerifiedScore(verifiedScore + score);
   setScore(0);
 }
